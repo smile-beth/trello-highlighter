@@ -1,0 +1,28 @@
+{
+  "name": "trello-highlighter",
+  "version": "0.1.0",
+  "scripts": {
+    "build:js": "parcel build src/*.js --dist-dir dist --no-source-maps --no-content-hash",
+    "cp:manifest": "cpx src/manifest.json dist/",
+    "build": "npm run build:js && npm run cp:manifest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smile-beth/trello-highlighter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smile-beth/trello-highlighter/issues"
+  },
+  "homepage": "https://github.com/smile-beth/trello-highlighter#readme",
+  "description": "",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0"
+  }
+}
