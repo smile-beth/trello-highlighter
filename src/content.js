@@ -35,13 +35,17 @@ const main = (mutationList, observer) => {
             // () と [] で表された数値をポイントとしてハイライト
             highlightedText = originalText
                 .replace(/\s*\(([0-9.?]+)\)\s*/g, (_, numStr) => {
-                    element.dataset.estimatePoint = numStr;
-                    sumEstimatePoint += parseFloat(numStr);
+                    if (!numStr.match(/\?/)) {
+                        element.dataset.estimatePoint = numStr;
+                        sumEstimatePoint += parseFloat(numStr);
+                    }
                     return `<span class="th-point estimate" title="${sumEstimatePoint}">${numStr}</span>`;
                 })
                 .replace(/\s*\[([0-9.?]+)]\s*/g, (_, numStr) => {
-                    element.dataset.actualPoint = numStr;
-                    sumActualPoint += parseFloat(numStr);
+                    if (!numStr.match(/\?/)) {
+                        element.dataset.actualPoint = numStr;
+                        sumActualPoint += parseFloat(numStr);
+                    }
                     return `<span class="th-point actual" title="${sumActualPoint}">${numStr}</span>`;
                 });
             element.innerHTML = highlightedText;
