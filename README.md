@@ -62,7 +62,6 @@ Tooling:
 
 ## Known limitations and notes
 - The target is Trello’s official web UI on the trello.com domain.
-- The number extraction regex allows `[0-9.?]+`, so patterns that include `?` (e.g. `3?`) are treated as numbers. If you prefer strict numbers only, adjust the regex accordingly.
 - Totals are calculated as a running sum from the top of the list; they depend on card order.
 - The totals are stored in the `title` attribute of each card’s highlight element (there is no UI shown in the column header in this version).
 - Behavior may change if Trello updates its UI.
@@ -70,7 +69,7 @@ Tooling:
 
 ## Development
 - Source code lives in `src/`, build artifacts go to `dist/`.
-- There is currently no watch/hot-reload script. During development, run `npm run build` as needed and reload the extension.
+- Run `npm run dev` and reload the extension manually.
 
 
 ## License
