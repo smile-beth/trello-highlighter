@@ -62,5 +62,5 @@ function debounce(fn, delay) {
     };
 }
 
-const observer = new MutationObserver(debounce(main, 2000));
+const observer = new MutationObserver(debounce(main, 1000));
 observer.observe(document.body, {childList: true, subtree: true});
