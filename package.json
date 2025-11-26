@@ -2,6 +2,7 @@
   "name": "trello-highlighter",
   "version": "0.1.0",
   "scripts": {
+    "dev": "npm run cp:manifest && parcel watch src/*.js --dist-dir dist --no-source-maps --no-content-hash",
     "build:js": "parcel build src/*.js --dist-dir dist --no-source-maps --no-content-hash",
     "cp:manifest": "cpx src/manifest.json dist/",
     "build": "npm run build:js && npm run cp:manifest"
@@ -19,8 +20,8 @@
   "homepage": "https://github.com/smile-beth/trello-highlighter#readme",
   "description": "",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.15.4",
-    "parcel": "^2.15.4"
+    "@parcel/transformer-sass": "^2.16.1",
+    "parcel": "^2.16.1"
   },
   "dependencies": {
     "cpx": "^1.5.0"

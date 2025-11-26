@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Trello Highlighter",
   "version": "1.0",
-  "description": "Highlight Trello Elements",
+  "description": "Highlight a trello's elements",
   "content_scripts": [
     {
       "matches": ["*://trello.com/*"],
