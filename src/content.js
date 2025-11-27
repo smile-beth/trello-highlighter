@@ -32,21 +32,28 @@ const main = (mutationList, observer) => {
             }
             const originalText = element.textContent;
             let highlightedText = '';
+            let estimatePoint = null;
             // () と [] で表された数値をポイントとしてハイライト
             highlightedText = originalText
                 .replace(/\s*\(([0-9.?]+)\)\s*/g, (_, numStr) => {
                     if (!numStr.match(/\?/)) {
                         element.dataset.estimatePoint = numStr;
-                        sumEstimatePoint += parseFloat(numStr);
+                        estimatePoint = parseFloat(numStr);
+                        sumEstimatePoint += estimatePoint;
                     }
-                    return `<span class="th-point estimate" title="${sumEstimatePoint}">${numStr}</span>`;
+                    return `<span class="th-point estimate" title="${sumEstimatePoint}">🎯${numStr}</span>`;
                 })
                 .replace(/\s*\[([0-9.?]+)]\s*/g, (_, numStr) => {
+                    let isCaution = false;
                     if (!numStr.match(/\?/)) {
                         element.dataset.actualPoint = numStr;
-                        sumActualPoint += parseFloat(numStr);
+                        const actualPoint = parseFloat(numStr);
+                        sumActualPoint += actualPoint;
+                        if (estimatePoint != null && actualPoint > estimatePoint) {
+                            isCaution = true;
+                        }
                     }
-                    return `<span class="th-point actual" title="${sumActualPoint}">${numStr}</span>`;
+                    return `<span class="th-point actual ${isCaution ? 'caution' : ''}" title="${sumActualPoint}">📝${numStr}</span>`;
                 });
             element.innerHTML = highlightedText;
             // 処理済みマーク付与
